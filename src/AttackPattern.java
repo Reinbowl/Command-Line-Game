@@ -1,10 +1,7 @@
 public class AttackPattern {
-    private static final int ATTACK = 0;
-    private static final int BLOCK =  1;
-
-    private static final int[] CHICKEN_PATTERN = {ATTACK};
-    private static final int[] DOG_PATTERN = {ATTACK, ATTACK, BLOCK};
-    private static final int[] BOAR_PATTERN = {ATTACK, BLOCK, BLOCK};
+    private static final int[] CHICKEN_PATTERN = {Actions.ATTACK};
+    private static final int[] DOG_PATTERN = {Actions.ATTACK, Actions.ATTACK, Actions.BLOCK};
+    private static final int[] BOAR_PATTERN = {Actions.ATTACK, Actions.BLOCK, Actions.BLOCK};
 
     public static int[] getPattern(String mobName) {
         switch (mobName) {
