@@ -13,4 +13,9 @@ public class Player extends Attributes {
     public void setAction(int action) {
         this.action = action;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Health: %d\nAttack: %d\nDefense: %d\nSpeed: %d", health, attack, defense, speed);
+    }
 }
