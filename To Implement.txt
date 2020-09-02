@@ -1,0 +1,5 @@
+hp bar when fighting (sorta like versus screen)
+allow to increase 1 stat after every battle
+enemy gets more difficult after every 3 round (increase base stats of mob)
+more monsters
+boss

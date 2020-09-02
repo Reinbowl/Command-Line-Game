@@ -1,7 +1,7 @@
 public class AttackPattern {
     private static final int[] CHICKEN_PATTERN = {Actions.ATTACK};
     private static final int[] DOG_PATTERN = {Actions.ATTACK, Actions.ATTACK, Actions.BLOCK};
-    private static final int[] BOAR_PATTERN = {Actions.ATTACK, Actions.BLOCK, Actions.BLOCK};
+    private static final int[] BOAR_PATTERN = {Actions.ATTACK, Actions.BLOCK, Actions.PBLOCK};
 
     public static int[] getPattern(String mobName) {
         switch (mobName.toLowerCase()) {
