@@ -6,12 +6,10 @@ public class Game {
     private static final Scanner input = new Scanner(System.in);
     private static final Random rand = new Random();
 
-    private static final int BASE_HEALTH = 5;
-    private static final int BASE_ATTACK = 2;
-    private static final int BASE_DEFENSE = 2;
-    private static final int BASE_SPEED = 5;
-
+    private static int Round = 1;
     private static Player player;
+    private static final int MOBNUM = 3;
+    private static Monster[] mobs = new Monster[MOBNUM];
 
     private static boolean userChoice() {
         String choice;
@@ -32,21 +30,40 @@ public class Game {
         do {
             System.out.print("Enter your name: ");
             userInput = input.nextLine();
-            System.out.println("Confirm your name is " + userInput + ".");
+            System.out.println("Confirm your name is " + userInput + "?");
         } while (!userChoice());
         System.out.println();
 
         do {
-            player = new Player(userInput,
-                    rand.nextInt(6) + BASE_HEALTH,
-                    rand.nextInt(3) + BASE_ATTACK,
-                    rand.nextInt(3) + BASE_DEFENSE,
-                    rand.nextInt(6) + BASE_SPEED);
+            player = new Player(userInput);
             System.out.println("This is your player stats:\n" + player);
             System.out.println("Do you want to reroll stats?");
         } while (userChoice());
         System.out.println();
 
         System.out.println("Now loading into new world...");
+        System.out.println();
+    }
+
+    public static void startGame() {
+        System.out.println("Welcome to the World of Anima");
+        System.out.println();
+        enemySelection();
+
+    }
+
+    private static void enemySelection() {
+        System.out.printf("%28s%-23s\n", "Round ", Round);
+        System.out.printf("%28s%-23s\n", "Choose an enemy", " to fight");
+        System.out.println("--------------------------------------------------------");
+        for (int i = 0; i < MOBNUM; i++) {
+            mobs[i] = new Mob();
+        }
+        System.out.printf("%-23s%-23s%s\n", "Enemy #1", "Enemy #2", "Enemy #3");
+        System.out.printf("%-23s%-23s%s\n", mobs[0].getName(), mobs[1].getName(), mobs[2].getName());
+        System.out.printf("%-23s%-23s%s\n", "Health: " + mobs[0].getHealth(),"Health: " + mobs[1].getHealth(), "Health: " + mobs[2].getHealth());
+        System.out.printf("%-23s%-23s%s\n", "Attack: " + mobs[0].getAttack(),"Attack: " + mobs[1].getAttack(), "Attack: " + mobs[2].getAttack());
+        System.out.printf("%-23s%-23s%s\n", "Defense: " + mobs[0].getDefense(),"Defense: " + mobs[1].getDefense(), "Defense: " + mobs[2].getDefense());
+        System.out.printf("%-23s%-23s%s\n", "Speed: " + mobs[0].getSpeed(),"Speed: " + mobs[1].getSpeed(), "Speed: " + mobs[2].getSpeed());
     }
 }

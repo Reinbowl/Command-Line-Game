@@ -4,7 +4,7 @@ public class AttackPattern {
     private static final int[] BOAR_PATTERN = {Actions.ATTACK, Actions.BLOCK, Actions.BLOCK};
 
     public static int[] getPattern(String mobName) {
-        switch (mobName) {
+        switch (mobName.toLowerCase()) {
         case "chicken":
             return CHICKEN_PATTERN;
         case "dog":
