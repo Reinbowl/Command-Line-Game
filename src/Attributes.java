@@ -1,28 +1,38 @@
 public class Attributes {
     protected String name;
-    protected int health;
+    protected int maxHealth;
+    protected int currHealth;
     protected int attack;
     protected int defense;
     protected int speed;
 
     public Attributes(String name, int health, int attack, int defense, int speed) {
         setName(name);
-        setHealth(health);
+        setMaxHealth(health);
         setAttack(attack);
         setDefense(defense);
         setSpeed(speed);
+        heal();
     }
 
     public int getAction() {
         return 0;
     }
 
+    public void heal() {
+        currHealth = maxHealth;
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getHealth() {
-        return health;
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getCurrHealth() {
+        return currHealth;
     }
 
     public int getAttack() {
@@ -37,8 +47,12 @@ public class Attributes {
         return speed;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public void setCurrHealth(int currHealth) {
+        this.currHealth = currHealth;
     }
 
     public void setAttack(int attack) {

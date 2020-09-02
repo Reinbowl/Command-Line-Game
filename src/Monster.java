@@ -10,6 +10,10 @@ public class Monster extends Attributes {
 
     @Override
     public int getAction() {
-        return attackPattern[patternNum++];
+        return attackPattern[patternNum];
+    }
+
+    public void nextAction() {
+        patternNum = (patternNum+1)%attackPattern.length;
     }
 }

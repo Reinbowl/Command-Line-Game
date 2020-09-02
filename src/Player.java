@@ -32,6 +32,6 @@ public class Player extends Attributes {
 
     @Override
     public String toString() {
-        return String.format("Health: %d\nAttack: %d\nDefense: %d\nSpeed: %d", health, attack, defense, speed);
+        return String.format("Health: %d\nAttack: %d\nDefense: %d\nSpeed: %d", maxHealth, attack, defense, speed);
     }
 }
