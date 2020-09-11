@@ -1,16 +1,24 @@
+import action.Actions;
+import action.Phase;
+import attribute.Mob;
+import attribute.Monster;
+import attribute.Player;
+
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Game {
     private static String userInput;
     private static final Scanner input = new Scanner(System.in);
-    private static final Random rand = new Random();
 
     private static int Round = 1;
     private static int mobChosen;
     private static Player player;
     private static final int MOBNUM = 3;
-    private static Monster[] mobs = new Monster[MOBNUM];
+    private static final ArrayList<Monster> mobs = new ArrayList<>();
+
+    private static final String SPACING = "%-23s";
+    private static final String[] PRINT_ORDER = {"N", "H", "A", "D", "S"};
 
     private static boolean userChoice() {
         String choice;
@@ -62,14 +70,14 @@ public class Game {
             while (!chooseMob()) {
                 System.out.println("Enter one of the enemy number.");
             }
-            Monster selectedMob = mobs[mobChosen - 1];
+            Monster selectedMob = mobs.get(mobChosen - 1);
             System.out.println("Guess your fighting a " + selectedMob.getName() + ".");
             boolean isMobDefeated = false;
             while (!isMobDefeated) {
                 player.setAction(getPlayerAction());
-                switch (Phase.attackPhase(player,selectedMob)) {
+                switch (Phase.attackPhase(player, selectedMob)) {
                 case DEFEAT:
-                    System.out.println("Guess fighting a " +selectedMob.getName() + " was too tough eh.");
+                    System.out.println("Guess fighting a " + selectedMob.getName() + " was too tough eh.");
                     System.out.println("Well you made it to round " + Round + ".");
                     isMobDefeated = true;
                     isGameEnded = true;
@@ -87,18 +95,47 @@ public class Game {
     }
 
     private static void enemySelection() {
-        System.out.printf("%28s%-23s\n", "Round ", Round);
-        System.out.printf("%28s%-23s\n", "Choose an enemy", " to fight");
+        System.out.println("Round " + Round);
+        System.out.println("Choose an enemy to fight");
         System.out.println("--------------------------------------------------------");
-        for (int i = 0; i < MOBNUM; i++) {
-            mobs[i] = new Mob();
+        mobs.clear();
+        for (int i = 1; i <= MOBNUM; i++) {
+            mobs.add(new Mob());
         }
-        System.out.printf("%-23s%-23s%s\n", "Enemy #1", "Enemy #2", "Enemy #3");
-        System.out.printf("%-23s%-23s%s\n", mobs[0].getName(), mobs[1].getName(), mobs[2].getName());
-        System.out.printf("%-23s%-23s%s\n", "Health: " + mobs[0].getMaxHealth(),"Health: " + mobs[1].getMaxHealth(), "Health: " + mobs[2].getMaxHealth());
-        System.out.printf("%-23s%-23s%s\n", "Attack: " + mobs[0].getAttack(),"Attack: " + mobs[1].getAttack(), "Attack: " + mobs[2].getAttack());
-        System.out.printf("%-23s%-23s%s\n", "Defense: " + mobs[0].getDefense(),"Defense: " + mobs[1].getDefense(), "Defense: " + mobs[2].getDefense());
-        System.out.printf("%-23s%-23s%s\n", "Speed: " + mobs[0].getSpeed(),"Speed: " + mobs[1].getSpeed(), "Speed: " + mobs[2].getSpeed());
+        printEnemy();
+        printAttributes();
+    }
+
+    private static void printEnemy() {
+        for (int i = 1; i <= MOBNUM; i++) {
+            System.out.printf(SPACING, "Enemy #" + i);
+        }
+        System.out.println();
+    }
+
+    private static void printAttributes() {
+        for (String s : PRINT_ORDER) {
+            for (Monster m : mobs) {
+                switch (s) {
+                case "N":
+                    System.out.printf(SPACING, m.getName());
+                    break;
+                case "H":
+                    System.out.printf(SPACING, "Health: " + m.getMaxHealth());
+                    break;
+                case "A":
+                    System.out.printf(SPACING, "Attack: " + m.getAttack());
+                    break;
+                case "D":
+                    System.out.printf(SPACING, "Defense: " + m.getDefense());
+                    break;
+                case "S":
+                    System.out.printf(SPACING, "Speed: " + m.getSpeed());
+                    break;
+                }
+            }
+            System.out.println();
+        }
     }
 
     private static int getPlayerAction() {
@@ -115,7 +152,7 @@ public class Game {
                 System.out.println("Choose an action: attack or block.");
             }
         } while (!isAnAction);
-        if(player.getAction() == Actions.ATTACK) {
+        if (player.getAction() == Actions.ATTACK) {
             return Actions.BLOCK;
         }
         return Actions.PBLOCK;

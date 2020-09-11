@@ -1,3 +1,5 @@
+package attribute;
+
 import java.util.Random;
 
 public class Mob extends Monster {
