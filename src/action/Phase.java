@@ -1,3 +1,9 @@
+package action;
+
+import attribute.Attributes;
+import attribute.Monster;
+import attribute.Player;
+
 public class Phase {
     public static Result attackPhase(Player player, Monster monster) {
         if (player.getAction() != Actions.ATTACK && monster.getAction() != Actions.ATTACK) {

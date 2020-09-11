@@ -1,3 +1,7 @@
+package action;
+
+import attribute.Attributes;
+
 public class Actions {
     public static final int ATTACK = 0;
     public static final int BLOCK =  1;
