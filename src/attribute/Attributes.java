@@ -1,4 +1,4 @@
-package attributes;
+package attribute;
 
 public class Attributes {
     protected String name;

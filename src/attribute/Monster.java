@@ -1,4 +1,6 @@
-package attributes;
+package attribute;
+
+import action.AttackPattern;
 
 public class Monster extends Attributes {
     protected int[] attackPattern;

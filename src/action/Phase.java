@@ -1,8 +1,8 @@
 package action;
 
-import attributes.Attributes;
-import attributes.Monster;
-import attributes.Player;
+import attribute.Attributes;
+import attribute.Monster;
+import attribute.Player;
 
 public class Phase {
     public static Result attackPhase(Player player, Monster monster) {

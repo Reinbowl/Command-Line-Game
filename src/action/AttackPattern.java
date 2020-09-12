@@ -1,6 +1,4 @@
-package attributes;
-
-import action.Actions;
+package action;
 
 public class AttackPattern {
     private static final int[] CHICKEN_PATTERN = {Actions.ATTACK};
