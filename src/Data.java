@@ -1,4 +1,4 @@
-import attributes.Player;
+import attribute.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;

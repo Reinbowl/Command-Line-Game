@@ -1,6 +1,6 @@
 package action;
 
-import attributes.Attributes;
+import attribute.Attributes;
 
 public class Actions {
     public static final int ATTACK = 0;
