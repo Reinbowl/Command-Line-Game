@@ -1,3 +1,5 @@
+package attributes;
+
 public class Monster extends Attributes {
     protected int[] attackPattern;
     protected int patternNum;

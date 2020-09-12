@@ -1,3 +1,5 @@
+package attributes;
+
 public class Attributes {
     protected String name;
     protected int maxHealth;
