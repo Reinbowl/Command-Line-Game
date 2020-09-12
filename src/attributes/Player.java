@@ -1,3 +1,5 @@
+package attributes;
+
 import java.util.Random;
 
 public class Player extends Attributes {

@@ -1,3 +1,7 @@
+package attributes;
+
+import action.Actions;
+
 public class AttackPattern {
     private static final int[] CHICKEN_PATTERN = {Actions.ATTACK};
     private static final int[] DOG_PATTERN = {Actions.ATTACK, Actions.ATTACK, Actions.BLOCK};

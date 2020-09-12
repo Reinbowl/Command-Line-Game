@@ -1,3 +1,9 @@
+import action.Actions;
+import action.Phase;
+import attributes.Mob;
+import attributes.Monster;
+import attributes.Player;
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -37,20 +43,26 @@ public class Game {
     }
 
     public static void createPlayer() {
-        do {
-            System.out.print("Enter your name: ");
-            userInput = input.nextLine();
-            System.out.println("Confirm your name is " + userInput + "?");
-        } while (!userChoice());
-        System.out.println();
-        do {
-            player = new Player(userInput);
-            System.out.println("This is your player stats:\n" + player);
-            System.out.println("Do you want to reroll stats?");
-        } while (userChoice());
-        System.out.println();
-        System.out.println("Now loading into new world...");
-        System.out.println();
+        if (Data.loadData()) {
+            System.out.println("Welcome back " + player.getName() + ".");
+        } else {
+            do {
+                System.out.print("Enter your name: ");
+                userInput = input.nextLine();
+                System.out.println("Confirm your name is " + userInput + "?");
+            } while (!userChoice());
+            System.out.println();
+            do {
+                player = new Player(userInput);
+                System.out.println("This is your player stats:\n" + player);
+                System.out.println("Do you want to reroll stats?");
+            } while (userChoice());
+            Data.saveData();
+            System.out.println();
+            System.out.println("Now loading into new world...");
+            System.out.println();
+            Data.closeFile();
+        }
     }
 
     public static void startGame() {
@@ -119,5 +131,21 @@ public class Game {
             return Actions.BLOCK;
         }
         return Actions.PBLOCK;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static int getRound() {
+        return Round;
+    }
+
+    public static void setPlayer(Player player) {
+        Game.player = player;
+    }
+
+    public static void setRound(int round) {
+        Round = round;
     }
 }
